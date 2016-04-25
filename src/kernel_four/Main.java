@@ -9,8 +9,6 @@ public class Main {
     private static Random rn = new Random();
     private static boolean timerFinished = false;
 
-    //TODO: need to have this use the graph class
-
     public static void main(String[] args) {
         // write your code here
         readArgs(args);
@@ -32,12 +30,12 @@ public class Main {
         double totalConnections = 0;
         double numSamples = 0;
         while(true){
+            //TODO maybe improve the computation
             totalConnections +=  graph.performCalculation();
             ++numSamples;
             graph.addNodes(400, gaussianMean, gaussianVariance);
             Set<Node> nodes = graph.pickNodesToRemove(4);
             graph.removeNodes(nodes);
-            //TODO need to have some computation based on this graph
         }
     }
 
