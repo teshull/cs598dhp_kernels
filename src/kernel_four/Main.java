@@ -42,7 +42,7 @@ public class Main {
         }, new Date(), createNewGraph * 1000);
 
         //doing this until the timer goes off
-        System.out.println("Starting Kernel");
+        System.out.println("Starting Kernel Four");
         totalConnections = 0;
         double numSamples = 0;
         while(true){

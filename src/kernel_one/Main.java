@@ -31,7 +31,7 @@ public class Main {
 
         totalSum = BigInteger.valueOf(0);
         //doing this until the timer goes off
-        System.out.println("Starting Kernel");
+        System.out.println("Starting Kernel One");
         while(true){
             initializeList(linkedList);
             sum = calculateSum(linkedList);

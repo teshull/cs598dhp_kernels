@@ -57,7 +57,7 @@ public class Main {
         }, new Date(), permanentListTime * 1000);
 
         //doing this until the timer goes off
-        System.out.println("Starting Kernel");
+        System.out.println("Starting Kernel Three");
         while(true){
             if(deletePermanent){
                 deletePermanent = false;
