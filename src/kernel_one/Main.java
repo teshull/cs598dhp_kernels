@@ -4,11 +4,13 @@ import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
-    private static int executionTime = 60;
+    private static int executionTime = 10;
     private static int listSize = 30;
     private static int randRange = 30;
     private static Random rn = new Random();
     private static boolean timerFinished = false;
+
+    private static BigInteger totalSum;
 
     public static void main(String[] args) {
         // write your code here
@@ -22,13 +24,14 @@ public class Main {
             public void run() {
                 timerFinished = true;
                 System.out.println("Timer is finished");
+                System.out.println("The total sum is " + totalSum.toString());
                 System.exit(0);
             }
         }, executionTime * 1000);
 
+        totalSum = BigInteger.valueOf(0);
         //doing this until the timer goes off
         System.out.println("Starting Kernel");
-        BigInteger totalSum = BigInteger.valueOf(0);
         while(true){
             initializeList(linkedList);
             sum = calculateSum(linkedList);
@@ -38,25 +41,26 @@ public class Main {
     }
 
     private static void readArgs(String[] args){
-        for (int i = 0; i < args.length; i++) {
+        for (int i = 0; i < args.length; i+=2) {
             int value = 0;
+            String key = args[i];
             try {
-                value = Integer.parseInt(args[i]);
+                value = Integer.parseInt(args[i+1]);
             }catch(NumberFormatException e){
-                System.err.println("Argument " + args[i] + "must be an integer");
+                System.err.println("Argument " + args[i+1] + "must be an integer");
             }
-            switch (i) {
-                case 0:
+            switch (key) {
+                case "--list":
                     listSize = value;
                     break;
-                case 1:
+                case "--range":
                     randRange = value;
                     break;
-                case 2:
+                case "--time":
                     executionTime = value;
                     break;
                 default:
-                    System.err.println("too many arguments");
+                    System.err.println("unable to read argument");
                     System.exit(-1);
                     break;
 

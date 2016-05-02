@@ -5,14 +5,14 @@ import java.util.*;
 public class Main {
     //time stuff
     private static int executionTime = 10;
-    private static int permanentListTime = 2;
+    private static int permanentListTime = 10;
 
     //list stuff
     private static int listSize = 30;
 
     //percentages for storing values
-    private static double moveToOldThreshold = 95;
-    private static double deleteFromListThreshold = 95;
+    private static double moveToOldThreshold = 98;
+    private static double deleteFromListThreshold = 50;
     private static double gaussianMean = 1000;
     private static double gaussianVariance = 100;
 
@@ -70,40 +70,40 @@ public class Main {
     }
 
     private static void readArgs(String[] args){
-        for (int i = 0; i < args.length; i++) {
+        for (int i = 0; i < args.length; i+=2) {
+            String key = args[i];
             double value = 0;
             try {
-                value = Double.parseDouble(args[i]);
+                value = Double.parseDouble(args[i+1]);
             }catch(NumberFormatException e){
-                System.err.println("Argument " + args[i] + "must be an integer");
+                System.err.println("Argument " + args[i+1] + "must be a double");
             }
-            switch (i) {
-                case 0:
+            switch (key) {
+                case "--list":
                     listSize = (int) value;
                     break;
-                case 1:
+                case "--oldThreshold":
                     moveToOldThreshold = value;
                     break;
-                case 2:
+                case "--deleteThreshold":
                     deleteFromListThreshold = value;
                     break;
-                case 3:
+                case "--mean":
                     gaussianMean = value;
                     break;
-                case 4:
+                case "--variance":
                     gaussianVariance = value;
                     break;
-                case 5:
+                case "--permanentListTime":
                     permanentListTime = (int) value;
                     break;
-                case 6:
+                case "--time":
                     executionTime = (int) value;
                     break;
                 default:
-                    System.err.println("too many arguments");
+                    System.err.println("unable to read argument");
                     System.exit(-1);
                     break;
-
             }
         }
     }
